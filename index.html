@@ -62,19 +62,19 @@
   <div id="app-wrapper" class="h-full w-full overflow-auto">
    <div class="max-w-5xl mx-auto p-4 md:p-8"><!-- Header -->
     <header class="text-center mb-8 animate-slide-in">
-     <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4"><span class="text-2xl">🎯</span> <span class="text-sm font-medium text-white">Smart Problem Statement Builder</span>
+     <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4"><span class="text-2xl"></span>This tool intends to support your learning and should not be treated as a replacement for your studies.<span class="text-sm font-medium text-white"></span>
      </div>
      <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-white mb-3 font-display">TOSCA Problem Statement Generator</h1>
-     <p id="subtitle" class="text-white/90 text-lg max-w-2xl mx-auto">Build structured problem statements with intelligent feedback and paraphrasing</p>
+     <p id="subtitle" class="text-white/90 text-lg max-w-2xl mx-auto">Build structured and editable problem statements</p>
     </header><!-- Example Section -->
     <div class="glass rounded-3xl shadow-2xl p-6 md:p-8 mb-6 animate-slide-in">
      <div class="flex items-center gap-3 mb-4"><span class="text-3xl">💡</span>
       <h2 class="text-xl font-bold text-gray-800 font-display">Example Problem Statement</h2>
      </div>
      <div class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-5 border-2 border-amber-200">
-      <p class="text-gray-700 mb-4 leading-relaxed italic">"How can <span class="bg-purple-200 px-2 py-0.5 rounded font-semibold">the Community Association</span> address <span class="bg-red-200 px-2 py-0.5 rounded font-semibold">the issue of lack of safe play spaces for children</span> by <span class="bg-green-200 px-2 py-0.5 rounded font-semibold">establishing a safe playground accessible to at least 50 children daily</span>, considering <span class="bg-orange-200 px-2 py-0.5 rounded font-semibold">limited budget and small available land area</span>?"</p>
+      <p class="text-gray-700 mb-4 leading-relaxed italic">"How can <span class="bg-purple-200 px-2 py-0.5 rounded font-semibold">the mahalla committee</span> address <span class="bg-red-200 px-2 py-0.5 rounded font-semibold">the issue of lack of safe play spaces for children</span> by <span class="bg-green-200 px-2 py-0.5 rounded font-semibold">establishing a safe playground accessible to at least 50 children daily</span>, considering <span class="bg-orange-200 px-2 py-0.5 rounded font-semibold">limited budget and small available land area</span>?"</p>
       <div class="grid md:grid-cols-2 gap-3 text-sm">
-       <div class="bg-white rounded-lg p-3 border border-purple-200"><span class="font-bold text-purple-700">O:</span> Community Association
+       <div class="bg-white rounded-lg p-3 border border-purple-200"><span class="font-bold text-purple-700">O:</span> The mahalla committee
        </div>
        <div class="bg-white rounded-lg p-3 border border-red-200"><span class="font-bold text-red-700">T:</span> Lack of safe play spaces
        </div>
@@ -227,7 +227,8 @@
            <p class="text-xs text-orange-700">What limitations or barriers exist?</p>
           </div>
          </div><span id="constraints-status" class="hidden text-green-600 font-bold text-xl check-icon">✓</span>
-        </div><textarea id="constraints-input" rows="2" oninput="handleConstraintsInput()" onblur="generateConstraintsParaphrase()" placeholder="e.g., Limited budget of $50,000, cannot expand building space..." class="w-full px-4 py-3 border-2 border-orange-300 rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-100 outline-none transition-all resize-none bg-white text-gray-800"></textarea> <!-- Feedback -->
+        </div><textarea id="constraints-input" rows="2" oninput="handleConstraintsInput()" onblur="generateConstraintsParaphrase()" placeholder="Use commas or 'and' for multiple constraints: limited budget, limited time, and limited space." class="w-full px-4 py-3 border-2 border-orange-300 rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-100 outline-none transition-all resize-none bg-white text-gray-800"></textarea>
+        <p class="mt-2 text-xs text-orange-700">Tip: Separate multiple constraints with commas or “and”.</p> <!-- Feedback -->
         <div id="constraints-feedback" class="hidden mt-3 p-3 rounded-lg"></div><!-- Paraphrase Suggestion -->
         <div id="constraints-paraphrase" class="hidden mt-3 bg-white border-2 border-orange-300 rounded-lg p-4 suggestion-badge">
          <div class="flex items-start gap-3"><span class="text-2xl">💡</span>
@@ -247,6 +248,7 @@
          </div>
         </div><input type="text" id="actors-input" placeholder="e.g., Students, librarians, teaching staff..." class="w-full px-4 py-3 border-2 border-teal-300 rounded-xl focus:border-teal-500 focus:ring-4 focus:ring-teal-100 outline-none transition-all bg-white text-gray-800"> </label>
       </div><!-- Statement Type -->
+      <!--
       <div class="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl p-5 border-2 border-cyan-200">
        <h3 class="font-bold text-cyan-900 mb-3 font-display">Choose Statement Format</h3>
        <div class="grid md:grid-cols-2 gap-3"><label class="cursor-pointer"> <input type="radio" name="statement-type" value="how" checked class="hidden peer">
@@ -267,7 +269,9 @@
           </div>
          </div></label>
        </div>
-      </div><!-- Generate Button --> <button type="button" onclick="generateStatement()" id="generate-btn" disabled class="w-full bg-gradient-to-r from-teal-600 via-cyan-600 to-teal-600 text-white py-4 px-6 rounded-xl font-bold text-lg shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 hover:shadow-2xl"> <span class="text-2xl">⚡</span> <span>Generate Problem Statement</span> </button>
+      </div>
+      -->
+      <!-- Generate Button --> <button type="button" onclick="generateStatement()" id="generate-btn" disabled class="w-full bg-gradient-to-r from-teal-600 via-cyan-600 to-teal-600 text-white py-4 px-6 rounded-xl font-bold text-lg shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 hover:shadow-2xl"> <span class="text-2xl">⚡</span> <span>Generate Problem Statement</span> </button>
      </form>
     </div><!-- Generated Statement Section -->
     <div id="statement-section" class="hidden glass rounded-3xl shadow-2xl p-6 md:p-8 mb-6 animate-slide-in">
@@ -292,6 +296,14 @@
       </div><textarea id="generated-statement-version2" rows="4" class="w-full px-4 py-3 border-2 border-blue-300 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none transition-all resize-none bg-white text-gray-800 font-medium leading-relaxed"></textarea>
       <div class="flex justify-end mt-3"><button onclick="selectVersion('version2')" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2 px-6 rounded-lg font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"> <span class="text-lg">✓</span> <span>Use This Version</span> </button>
       </div>
+     </div><!-- Version 3 -->
+     <div class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-2xl p-5 border-2 border-blue-300 mb-4">
+      <div class="flex items-center justify-between mb-3">
+       <div class="flex items-center gap-2"><span class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm font-bold">Version 3</span> <span class="text-xs text-gray-600">Exploratory Format</span>
+       </div><button onclick="copyStatement('version3')" class="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold border-2 border-blue-300 transition-all hover:scale-105"> <span id="copy-icon-version3"> 📋</span> <span id="copy-text-version3">Copy</span> </button>
+      </div><textarea id="generated-statement-version3" rows="4" class="w-full px-4 py-3 border-2 border-blue-300 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none transition-all resize-none bg-white text-gray-800 font-medium leading-relaxed"></textarea>
+      <div class="flex justify-end mt-3"><button onclick="selectVersion('version3')" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2 px-6 rounded-lg font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"> <span class="text-lg"></span> <span>Use This Version</span> </button>
+      </div>
      </div><!-- Satisfaction Check -->
      <div class="bg-white rounded-2xl p-6 border-2 border-gray-200 mb-4">
       <h3 class="font-bold text-gray-800 text-lg mb-3 font-display">Need to make changes?</h3>
@@ -314,15 +326,32 @@
      </div><button onclick="startOver()" class="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-3 px-8 rounded-xl font-bold hover:shadow-xl hover:scale-105 transition-all duration-300"> Create Another Statement </button>
     </div><!-- Educational Purpose Notice - Compact Footer -->
     <div class="glass rounded-2xl shadow-xl p-5 mb-6 border-2 border-blue-200">
-     <div class="flex items-start gap-3">
-      <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0"><span class="text-xl">ℹ️</span>
-      </div>
-      <div class="flex-1">
-       <h3 class="text-base font-bold text-gray-800 mb-2 font-display">Educational Tool - No AI Used</h3>
-       <div class="text-xs text-gray-700 space-y-1.5 leading-relaxed">
-        <p><strong>🎓 Learning Purpose:</strong> This tool provides basic structural guidance for the TOSCA framework using simple rules, not artificial intelligence.</p>
-        <p><strong>🤝 Work With Your Teacher:</strong> Always discuss your problem statements with your teacher and partners for meaningful feedback and improvement.</p>
-        <p><strong>⚠️ Not a Substitute:</strong> This cannot replace critical thinking or expert instruction. Use only for educational learning purposes.</p>
+     
+      <div class="flex items-center gap-4">
+  <div class="flex-shrink-0">
+    <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl flex items-center justify-center shadow-xl">
+      <span class="text-[14px] leading-[14px] text-white font-extrabold text-center tracking-tight">
+        Pay<br>attention
+      </span>
+    </div>
+  </div>
+
+  <div class="flex-1">
+    <div class="flex items-center gap-2 mb-1">
+      <h3 class="text-lg font-extrabold text-gray-900 font-display m-0">Educational Tool</h3>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300">
+        BETA
+      </span>
+    </div>
+
+    <div class="text-sm text-gray-700 space-y-2 leading-relaxed">
+      <p><strong>🎓 Purpose:</strong> This tool provides basic structural guidance for the TOSCA framework using simple rules. It may make mistakes. Use it as a starting point, then revise the wording to fit your context.</p>
+      <p><strong>🧑‍🏫 Teacher support:</strong> You can share your generated problem statement with your teacher for meaningful feedback and improvement.</p>
+      <p><strong>⚠️ Important:</strong> This tool supports learning, but it cannot replace critical thinking or expert guidance.</p>
+    </div>
+  </div>
+</div>
+
        </div>
       </div>
      </div>
@@ -830,10 +859,6 @@
 
     // Generate statement - ENHANCED VERSION WITH TWO VARIATIONS
     function generateStatement() {
-    // Read selected statement format
-  const selectedType = document.querySelector(
-    'input[name="statement-type"]:checked'
-  )?.value || 'how';
       let owner = document.getElementById('owner-input').value.trim();
       let trouble = document.getElementById('trouble-input').value.trim();
       let success = document.getElementById('success-input').value.trim();
@@ -854,21 +879,13 @@
         return;
       }
       
-      // Generate both versions
-      // Generate versions respecting selected format
-let version1, version2;
+      const version1 = generateStatementVersion(owner, trouble, success, constraints, 'how');
+      const version2 = generateStatementVersion(owner, trouble, success, constraints, 'what');
+      const version3 = generateStatementVersion(owner, trouble, success, constraints, 'ways');
 
-if (selectedType === 'how') {
-  version1 = generateStatementVersion(owner, trouble, success, constraints, 'how');
-  version2 = generateStatementVersion(owner, trouble, success, constraints, 'what');
-} else {
-  version1 = generateStatementVersion(owner, trouble, success, constraints, 'what');
-  version2 = generateStatementVersion(owner, trouble, success, constraints, 'how');
-}
-
-      
       document.getElementById('generated-statement-version1').value = version1;
       document.getElementById('generated-statement-version2').value = version2;
+      document.getElementById('generated-statement-version3').value = version3;
       document.getElementById('statement-section').classList.remove('hidden');
       
       generateOverallFeedback();
@@ -884,11 +901,13 @@ if (selectedType === 'how') {
       let constraints = constraintsInput;
       
       // === OWNER PROCESSING ===
-      // Add "the" if missing and capitalize properly
+      // Owner: ensure "the" prefix but do NOT force capitalization
+      owner = owner.trim();
+      owner = owner.replace(/^the\s+/i, 'the ');
       if (!owner.toLowerCase().startsWith('the ')) {
         owner = 'the ' + owner;
       }
-      owner = owner.charAt(0).toUpperCase() + owner.slice(1);
+      owner = 'the ' + owner.slice(4);
       
       // === TROUBLE PROCESSING ===
       // ALWAYS start with lowercase
@@ -917,7 +936,60 @@ if (selectedType === 'how') {
         troubleV2 = 'the problem of ' + troubleV2;
       }
       
+      const normalizeSuccess = (value) => {
+        let text = value.trim();
+        if (!text) return text;
+
+        const lower = text.toLowerCase();
+        const verbStarters = [
+          'to', 'achieve', 'establish', 'create', 'develop', 'implement', 'improve',
+          'increase', 'reduce', 'ensure', 'provide', 'build', 'introduce', 'upgrade',
+          'expand', 'streamline', 'standardize', 'deliver'
+        ];
+        const startsWithVerb = verbStarters.some(verb => lower.startsWith(verb + ' '));
+        if (startsWithVerb) return text;
+
+        if (lower.startsWith('better ')) {
+          return 'improve ' + text.slice(7).trim();
+        }
+
+        const metricWords = [
+          'reduce', 'reduction', 'increase', 'improvement', 'accuracy', 'errors',
+          'time', 'cost', 'efficiency', 'rate', 'satisfaction'
+        ];
+        const hasMetricWord = metricWords.some(word => lower.includes(word));
+        const hasPercent = /%|\bpercent\b|\bpercentage\b/.test(lower);
+        if (hasPercent || hasMetricWord) {
+          return 'achieve ' + text;
+        }
+
+        const ensureWords = ['availability', 'access', 'coverage', 'uptime', 'visibility'];
+        if (ensureWords.some(word => lower.includes(word))) {
+          return 'ensure ' + text;
+        }
+
+        const implementWords = [
+          'system', 'platform', 'app', 'tool', 'website', 'process', 'workflow',
+          'service', 'policy', 'strategy', 'plan', 'procedure'
+        ];
+        if (implementWords.some(word => lower.includes(word))) {
+          return 'implement ' + text;
+        }
+
+        return 'create ' + text;
+      };
+
+      const normalizeConstraint = (value) => {
+        let text = value.trim();
+        if (!text) return text;
+        text = text.replace(/^(lack of|no|limited|insufficient)\s+/i, '');
+        text = text.replace(/\s+/g, ' ').trim();
+        return text;
+      };
+
       // === SUCCESS PROCESSING ===
+      success = normalizeSuccess(success);
+
       // ALWAYS start with lowercase
       success = success.charAt(0).toLowerCase() + success.slice(1);
       success = success.replace(/\.$/, '');
@@ -943,7 +1015,12 @@ if (selectedType === 'how') {
         'improve ': 'improving ',
         'upgrade ': 'upgrading ',
         'obtain ': 'obtaining ',
-        'reach ': 'reaching '
+        'reach ': 'reaching ',
+        'deliver ': 'delivering ',
+        'expand ': 'expanding ',
+        'streamline ': 'streamlining ',
+        'standardize ': 'standardizing ',
+        'introduce ': 'introducing '
       };
       
       let needsByPrefix = false;
@@ -1000,33 +1077,50 @@ if (selectedType === 'how') {
       } else {
         constraintsList = [constraints];
       }
-      
-      // Clean up each constraint - ALWAYS lowercase start
-      constraintsList = constraintsList.map(c => {
+
+      if (constraintsList.length === 1) {
+        const singleConstraint = constraintsList[0].trim();
+        const prefixMatches = singleConstraint.match(/\b(?:lack of|no|limited|insufficient)\b/gi);
+        if (prefixMatches && prefixMatches.length > 1) {
+          const segments = singleConstraint.match(/(?:lack of|no|limited|insufficient)\s+.*?(?=(?:lack of|no|limited|insufficient)\s+|$)/gi);
+          if (segments && segments.length > 1) {
+            constraintsList = segments;
+          }
+        }
+      }
+
+      const trimmedConstraints = constraintsList.map(c => c.trim()).filter(c => c.length > 0);
+      const cleanedConstraints = trimmedConstraints.map(normalizeConstraint).filter(c => c.length > 0);
+      const useGroupedConstraints = cleanedConstraints.length >= 2;
+      const constraintsTextList = (useGroupedConstraints ? cleanedConstraints : trimmedConstraints).map(c => {
         c = c.charAt(0).toLowerCase() + c.slice(1);
         c = c.replace(/\.$/, '');
         c = c.replace(/^(the |a |an )/, '');
+        c = c.replace(/\s+/g, ' ').trim();
         return c;
       });
       
       // VERSION 1: "considering" format
       let constraintsTextV1 = '';
-      if (constraintsList.length === 1) {
-        constraintsTextV1 = constraintsList[0];
-      } else if (constraintsList.length === 2) {
-        constraintsTextV1 = constraintsList.join(' and ');
-      } else {
-        constraintsTextV1 = constraintsList.slice(0, -1).join(', ') + ', and ' + constraintsList[constraintsList.length - 1];
+      let joinedConstraints = '';
+      if (constraintsTextList.length === 1) {
+        constraintsTextV1 = constraintsTextList[0];
+      } else if (constraintsTextList.length === 2) {
+        joinedConstraints = constraintsTextList.join(' and ');
+        constraintsTextV1 = `constraints related to ${joinedConstraints}`;
+      } else if (constraintsTextList.length > 2) {
+        joinedConstraints = constraintsTextList.slice(0, -1).join(', ') + ', and ' + constraintsTextList[constraintsTextList.length - 1];
+        constraintsTextV1 = `constraints related to ${joinedConstraints}`;
       }
       
       // VERSION 2: "while facing" / "despite" format - more challenge-focused
       let constraintsTextV2 = '';
-      if (constraintsList.length === 1) {
-        constraintsTextV2 = constraintsList[0];
-      } else if (constraintsList.length === 2) {
-        constraintsTextV2 = constraintsList.join(' and ');
-      } else {
-        constraintsTextV2 = constraintsList.slice(0, -1).join(', ') + ', and ' + constraintsList[constraintsList.length - 1];
+      if (constraintsTextList.length === 1) {
+        constraintsTextV2 = constraintsTextList[0];
+      } else if (constraintsTextList.length === 2) {
+        constraintsTextV2 = `limitations in ${joinedConstraints}`;
+      } else if (constraintsTextList.length > 2) {
+        constraintsTextV2 = `limitations in ${joinedConstraints}`;
       }
       
       // === GENERATE FINAL STATEMENT ===
@@ -1034,8 +1128,11 @@ if (selectedType === 'how') {
       if (statementType === 'how') {
         // Version 1: Standard "How can... address... by... considering..."
         statement = `How can ${owner} address ${troubleV1} ${successV1}, considering ${constraintsTextV1}?`;
-      } else {
-        // Version 2: Alternative "In what ways can... overcome... in order to... while facing..."
+      } else if (statementType === 'what') {
+        // Version 2: Strategy-focused "What strategies can... use to... while facing..."
+        statement = `What strategies can ${owner} use to overcome ${troubleV2} ${successV2}, while facing ${constraintsTextV2}?`;
+      } else if (statementType === 'ways') {
+        // Version 3: Alternative "In what ways can... overcome... in order to... while facing..."
         statement = `In what ways can ${owner} overcome ${troubleV2} ${successV2}, while facing ${constraintsTextV2}?`;
       }
       
