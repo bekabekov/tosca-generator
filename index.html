@@ -830,6 +830,10 @@
 
     // Generate statement - ENHANCED VERSION WITH TWO VARIATIONS
     function generateStatement() {
+    // Read selected statement format
+  const selectedType = document.querySelector(
+    'input[name="statement-type"]:checked'
+  )?.value || 'how';
       let owner = document.getElementById('owner-input').value.trim();
       let trouble = document.getElementById('trouble-input').value.trim();
       let success = document.getElementById('success-input').value.trim();
@@ -851,8 +855,17 @@
       }
       
       // Generate both versions
-      const version1 = generateStatementVersion(owner, trouble, success, constraints, 'how');
-      const version2 = generateStatementVersion(owner, trouble, success, constraints, 'what');
+      // Generate versions respecting selected format
+let version1, version2;
+
+if (selectedType === 'how') {
+  version1 = generateStatementVersion(owner, trouble, success, constraints, 'how');
+  version2 = generateStatementVersion(owner, trouble, success, constraints, 'what');
+} else {
+  version1 = generateStatementVersion(owner, trouble, success, constraints, 'what');
+  version2 = generateStatementVersion(owner, trouble, success, constraints, 'how');
+}
+
       
       document.getElementById('generated-statement-version1').value = version1;
       document.getElementById('generated-statement-version2').value = version2;
