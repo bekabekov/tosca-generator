@@ -1208,5 +1208,51 @@
     // Initialize
     updateProgress();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9be67bb4a3ee2f12',t:'MTc2ODQ5MTc0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9be67bb4a3ee2f12',t:'MTc2ODQ5MTc0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ <!-- PATCH START -->
+<script>
+// ✅ PATCH: Make "What strategies..." button control which statement is prioritized
+function generateStatement() {
+  let owner = document.getElementById('owner-input').value.trim();
+  let trouble = document.getElementById('trouble-input').value.trim();
+  let success = document.getElementById('success-input').value.trim();
+  let constraints = document.getElementById('constraints-input').value.trim();
+
+  // Check for gibberish in any field
+  const fieldsToCheck = [
+    { value: owner, name: 'Owner' },
+    { value: trouble, name: 'Trouble' },
+    { value: success, name: 'Success' },
+    { value: constraints, name: 'Constraints' }
+  ];
+
+  const gibberishFields = fieldsToCheck.filter(field => isGibberish(field.value));
+  if (gibberishFields.length > 0) {
+    showWarning('The following fields appear to contain random typing', gibberishFields.map(f => f.name));
+    return;
+  }
+
+  // ✅ Detect which statement type is selected
+  const selectedType = document.querySelector('input[name="statement-type"]:checked').value;
+
+  // Generate both versions
+  const version1 = generateStatementVersion(owner, trouble, success, constraints, 'how');
+  const version2 = generateStatementVersion(owner, trouble, success, constraints, 'what');
+
+  document.getElementById('generated-statement-version1').value = version1;
+  document.getElementById('generated-statement-version2').value = version2;
+  document.getElementById('statement-section').classList.remove('hidden');
+
+  generateOverallFeedback();
+
+  // ✅ Scroll to the selected version automatically
+  if (selectedType === 'what') {
+    document.getElementById('generated-statement-version2').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    document.getElementById('generated-statement-version1').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+</script>
+<!-- PATCH END -->
+ </body>
 </html>
