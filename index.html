@@ -1208,5 +1208,63 @@
     // Initialize
     updateProgress();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9be67bb4a3ee2f12',t:'MTc2ODQ5MTc0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9be67bb4a3ee2f12',t:'MTc2ODQ5MTc0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ <script>
+// === PATCH: Independent Generation for "How can..." and "What strategies..." ===
+
+// Create separate handlers for each statement type
+function generateHowStatement() {
+  generateStatementForType('how');
+}
+
+function generateWhatStatement() {
+  generateStatementForType('what');
+}
+
+// Core generator for a specific type
+function generateStatementForType(type) {
+  let owner = document.getElementById('owner-input').value.trim();
+  let trouble = document.getElementById('trouble-input').value.trim();
+  let success = document.getElementById('success-input').value.trim();
+  let constraints = document.getElementById('constraints-input').value.trim();
+
+  // Validate completion
+  const allComplete = Object.values(validationState).every(v => v);
+  if (!allComplete) {
+    showWarning('Please complete all required fields before generating', ['Owner', 'Trouble', 'Success', 'Constraints']);
+    return;
+  }
+
+  // Generate the statement for the selected type
+  const statement = generateStatementVersion(owner, trouble, success, constraints, type);
+
+  // Display only the relevant version section
+  const section = document.getElementById('statement-section');
+  section.classList.remove('hidden');
+
+  if (type === 'how') {
+    document.getElementById('generated-statement-version1').value = statement;
+    document.getElementById('generated-statement-version1').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    document.getElementById('generated-statement-version2').value = statement;
+    document.getElementById('generated-statement-version2').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  generateOverallFeedback();
+}
+
+// === PATCH: Add event listeners to radio buttons for independent generation ===
+document.addEventListener('DOMContentLoaded', () => {
+  const howRadio = document.querySelector('input[name="statement-type"][value="how"]');
+  const whatRadio = document.querySelector('input[name="statement-type"][value="what"]');
+  const generateBtn = document.getElementById('generate-btn');
+
+  // Replace default click behavior
+  generateBtn.onclick = () => {
+    if (howRadio.checked) generateHowStatement();
+    else if (whatRadio.checked) generateWhatStatement();
+  };
+});
+</script>
+ </body>
 </html>
